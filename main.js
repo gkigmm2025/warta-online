@@ -1,5 +1,5 @@
 // --- KONFIGURASI ---
-const pdfUrl = 'WARTA JEMAAT GKI GMM EDISI 12 Tahun ke-22 (07-12-2025).pdf'; // Ganti dengan nama file PDF Anda
+const pdfUrl = 'pdf/WARTA JEMAAT GKI GMM EDISI 12 Tahun ke-22 (07-12-2025).pdf'; // Ganti dengan nama file PDF Anda
 const bookElement = document.getElementById('book');
 
 // Inisialisasi Flipbook
