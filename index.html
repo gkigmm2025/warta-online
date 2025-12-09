@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warta Jemaat PDF Flipbook</title>
+    <title>Warta Jemaat</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="container">
-        <h1>Warta Jemaat Digital</h1>
-        <p>Menampilkan langsung dari PDF.</p>
+        <h1 class="mini-title">Warta Jemaat Digital</h1>
+        
+        <p id="docName" class="file-name">Memuat...</p>
 
         <div id="book"></div>
         
         <div class="controls">
-            <button id="btnPrev">&#8592; Sebelumnya</button>
-            <span id="pageInfo">Halaman: -</span>
-            <button id="btnNext">Selanjutnya &#8594;</button>
+            <button id="btnPrev" title="Sebelumnya">&#10094;</button>
+            
+            <span id="pageInfo">1</span>
+            
+            <button id="btnNext" title="Selanjutnya">&#10095;</button>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script>
-        // Set worker untuk PDF.js
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
     </script>
 

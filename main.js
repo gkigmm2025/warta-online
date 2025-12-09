@@ -1,11 +1,14 @@
 // --- KONFIGURASI ---
-const pdfUrl = 'WARTA JEMAAT GKI GMM EDISI 12 Tahun ke-22 (07-12-2025).pdf'; // Ganti dengan nama file PDF Anda
+const pdfUrl = 'WARTA JEMAAT GKI GMM EDISI 12 Tahun ke-22 (07-12-2025).pdf'; // Pastikan nama file ini sesuai
 const bookElement = document.getElementById('book');
+
+// Tampilkan nama file di HTML
+document.getElementById('docName').innerText = pdfUrl;
 
 // Inisialisasi Flipbook
 const pageFlip = new St.PageFlip(bookElement, {
-    width: 400,  // Lebar dasar (resolusi render)
-    height: 566, // Tinggi dasar (sesuai rasio A4 biasanya)
+    width: 400,
+    height: 566,
     size: 'stretch',
     minWidth: 300,
     maxWidth: 800,
@@ -14,70 +17,61 @@ const pageFlip = new St.PageFlip(bookElement, {
     showCover: true,
 });
 
-// Fungsi untuk merender PDF ke Flipbook
 async function loadPdf() {
     try {
-        // 1. Load Dokumen PDF
         const loadingTask = pdfjsLib.getDocument(pdfUrl);
         const pdf = await loadingTask.promise;
-        console.log("PDF Loaded, total pages: " + pdf.numPages);
 
-        // 2. Loop setiap halaman PDF
         for (let i = 1; i <= pdf.numPages; i++) {
             const page = await pdf.getPage(i);
             
-            // Buat elemen Div pembungkus halaman
             const div = document.createElement('div');
             div.className = 'my-page';
-            if (i === 1 || i === pdf.numPages) div.dataset.density = 'hard'; // Hard cover
+            if (i === 1 || i === pdf.numPages) div.dataset.density = 'hard';
             
-            // Buat Canvas untuk menggambar PDF
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             
-            // Atur skala resolusi (agar tidak pecah di HP)
+            // Resolusi gambar
             const viewport = page.getViewport({ scale: 1.5 }); 
             canvas.width = viewport.width;
             canvas.height = viewport.height;
 
-            // Render halaman PDF ke Canvas
             await page.render({
                 canvasContext: context,
                 viewport: viewport
             }).promise;
 
-            // Masukkan canvas ke div, div ke buku
             div.appendChild(canvas);
             bookElement.appendChild(div);
         }
 
-        // 3. Update Flipbook setelah semua halaman masuk
         pageFlip.loadFromHTML(document.querySelectorAll('.my-page'));
         
-        // Update info halaman
+        // Update angka halaman awal
         updatePageInfo();
 
     } catch (error) {
-        console.error("Gagal memuat PDF: " + error);
-        bookElement.innerHTML = "<p>Gagal memuat file PDF. Pastikan nama file benar.</p>";
+        console.error("Error: " + error);
+        document.getElementById('docName').innerText = "Gagal memuat: " + pdfUrl;
+        document.getElementById('docName').style.color = "red";
     }
 }
 
-// Navigasi Tombol
+// Navigasi
 document.getElementById('btnPrev').onclick = () => pageFlip.flipPrev();
 document.getElementById('btnNext').onclick = () => pageFlip.flipNext();
 
-// Update Info Halaman saat dibalik
+// Update Angka saat dibalik
 pageFlip.on('flip', (e) => {
     updatePageInfo();
 });
 
 function updatePageInfo() {
-    // Menampilkan halaman saat ini (indeks + 1 karena indeks mulai dari 0)
-    // Tapi karena mode buku (2 halaman), logikanya agak beda, ini simpelnya:
-    document.getElementById('pageInfo').innerText = 
-        `Halaman ${pageFlip.getCurrentPageIndex() + 1}`;
+    // HANYA menampilkan angka
+    // pageFlip.getCurrentPageIndex() dimulai dari 0, jadi kita tambah 1
+    const currentPage = pageFlip.getCurrentPageIndex() + 1;
+    document.getElementById('pageInfo').innerText = currentPage;
 }
 
-// Jalankan fungsi
 loadPdf();
