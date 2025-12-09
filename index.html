@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="utf-8">
-<title>Warta Jemaat GKI Griya Merpati Mas</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="https://cdn.3dflipbook.net/js/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warta Jemaat PDF Flipbook</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="source-link">
-  <a class="show-source" data="simple-tag-pdf">Warta Jemaat GKI Griya Merpati Mas</a>
-</div>
 
-<div class="sample-container-box">
-  <div class="sample-container flip-book-container" src="pdf/WARTA JEMAAT GKI GMM EDISI 12 Tahun ke-22 (07-12-2025).pdf">
- </div>
-</div>
+    <div class="container">
+        <h1>Warta Jemaat Digital</h1>
+        <p>Menampilkan langsung dari PDF.</p>
 
-<script src="js/three.min.js"></script>
-<script src="js/pdf.min.js"></script>
+        <div id="book"></div>
+        
+        <div class="controls">
+            <button id="btnPrev">&#8592; Sebelumnya</button>
+            <span id="pageInfo">Halaman: -</span>
+            <button id="btnNext">Selanjutnya &#8594;</button>
+        </div>
+    </div>
 
-<script type="text/javascript">
- window.PDFJS_LOCALE = {
-  pdfJsWorker: 'js/pdf.worker.js',
-  pdfJsCMapUrl: 'cmaps'
- };
-</script>
-<script src="js/3dflipbook.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        // Set worker untuk PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    
+    <script src="main.js"></script>
 </body>
 </html>
