@@ -1,0 +1,76 @@
+/* RESET DASAR */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif; /* Ganti dengan font yang Anda inginkan */
+    background-color: #f4f4f4; /* Warna latar belakang halaman */
+}
+
+/* WADAH UTAMA SAMPEL */
+.sample-container-box {
+    display: flex;
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center;     /* Pusatkan secara vertikal */
+    padding: 20px;
+    height: calc(100vh - 50px); /* Memastikan wadah memenuhi viewport, dikurangi tinggi header/link */
+    box-sizing: border-box;
+}
+
+/* WADAH FLIPBOOK ITU SENDIRI */
+.sample-container.flip-book-container {
+    /* Atur dimensi flipbook Anda di sini */
+    width: 90%; 
+    max-width: 1000px; /* Batasi lebar maksimal */
+    height: 100%;
+    max-height: 800px; /* Batasi tinggi maksimal */
+    
+    /* Penting: Pastikan margin/padding 0 agar flipbook engine bisa mengisi penuh */
+    margin: 0;
+    padding: 0;
+    
+    /* Memberikan sedikit efek visual agar terlihat seperti buku */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden; /* Penting untuk menjaga konten di dalam batas */
+    
+    /* Pastikan wadah memiliki tinggi/lebar yang ditentukan agar engine 3D dapat diinisialisasi */
+    min-height: 400px; 
+    min-width: 300px;
+}
+
+/* GAYA UNTUK LINK "Show source code" */
+.source-link {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+}
+
+.source-link .show-source {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.source-link .show-source:hover {
+    background-color: #555;
+}
+
+/* GAYA RESPONSIVE (Opsional, disarankan) */
+@media (max-width: 768px) {
+    .sample-container-box {
+        padding: 10px;
+        height: calc(100vh - 40px);
+    }
+    
+    .sample-container.flip-book-container {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        max-height: none;
+        box-shadow: none; /* Hilangkan bayangan di perangkat kecil */
+    }
+}
