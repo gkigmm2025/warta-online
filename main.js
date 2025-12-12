@@ -7,8 +7,8 @@ document.getElementById('docName').innerText = pdfUrl;
 
 // Inisialisasi Flipbook
 const pageFlip = new St.PageFlip(bookElement, {
-    width: 400,
-    height: 566,
+    width: 100%,
+    height: 100%,
     showCover: true,
 });
 
