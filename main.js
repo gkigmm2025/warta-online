@@ -2,6 +2,9 @@
 const pdfUrl = 'WARTA JEMAAT GKI GMM EDISI 12 Tahun ke-22 (07-12-2025).pdf'; // Pastikan nama file ini sesuai
 const bookElement = document.getElementById('book');
 
+// Tampilkan nama file (opsional, di CSS disembunyikan)
+document.getElementById('docName').innerText = pdfUrl;
+
 // Deteksi jika layar HP (Mobile)
 const isMobile = window.innerWidth < 768;
 
