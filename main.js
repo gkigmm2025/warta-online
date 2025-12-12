@@ -9,10 +9,6 @@ document.getElementById('docName').innerText = pdfUrl;
 const pageFlip = new St.PageFlip(bookElement, {
     width: 400,
     height: 566,
-    minWidth: 300,
-    maxWidth: 800,
-    minHeight: 300,
-    maxHeight: 800,
     showCover: true,
 });
 
