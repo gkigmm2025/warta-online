@@ -121,3 +121,23 @@ button:hover { background-color: #c0392b; }
         font-size: 16px;
     }
 }
+/* Styling untuk Link Download */
+.file-name {
+    font-size: 0.9rem;
+    color: #bdc3c7;          /* Warna abu-abu terang */
+    margin-bottom: 10px;
+    text-decoration: none;   /* Hilangkan garis bawah standar */
+    display: inline-block;   /* Agar padding berfungsi */
+    padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,0.2); /* Garis tipis */
+    border-radius: 15px;     /* Membuat sudut bulat */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.file-name:hover {
+    background-color: #e74c3c; /* Latar merah saat disorot */
+    color: white;
+    border-color: #e74c3c;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+}
