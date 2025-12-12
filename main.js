@@ -12,8 +12,8 @@ const pageFlip = new St.PageFlip(bookElement, {
     size: 'stretch',
     minWidth: 300,
     maxWidth: 800,
-    minHeight: 400,
-    maxHeight: 1100,
+    minHeight: 300,
+    maxHeight: 800,
     showCover: true,
 });
 
